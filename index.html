@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Internet's Most Honest Food Blog — Happiness & Hominy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #f5f0e8;
+      --ink: #1a1814;
+      --ink-light: #3d3830;
+      --ink-faint: #8a8278;
+      --rust: #8b4513;
+      --rust-light: #a0522d;
+      --rule: #d4cdc4;
+      --rule-light: #e8e2d8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ── */
+
+    .masthead {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      animation: fadeIn 1.2s ease both;
+    }
+
+    .masthead-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.2rem;
+    }
+
+    .masthead-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .masthead-rule::before,
+    .masthead-rule::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .masthead-ornament {
+      color: var(--rust);
+      font-size: 1rem;
+    }
+
+    /* ── HERO ── */
+
+    .hero {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .kicker {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.8rem;
+      display: block;
+    }
+
+    .headline {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+
+    .headline em {
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .dek {
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-light);
+      font-style: italic;
+      border-left: 2px solid var(--rust);
+      padding-left: 1.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .byline-block {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule-light);
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    #section-7 p:last-child {
+      margin-top: 2.4rem;
+    }
+
+    .byline-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--rule);
+    }
+
+    .byline-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+
+    .byline-text strong {
+      color: var(--ink-light);
+      font-weight: 400;
+    }
+
+    /* ── BODY ── */
+
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* Drop cap on first paragraph */
+    .article-body > p:first-child::first-letter {
+      font-size: 4.8rem;
+      font-weight: 500;
+      float: left;
+      line-height: 0.82;
+      margin: 0.1rem 0.12rem -0.1rem 0;
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    p {
+      font-size: 1.13rem;
+      line-height: 1.9;
+      color: var(--ink);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+    }
+
+    /* ── SECTIONS ── */
+
+    .section {
+      margin: 4rem 0;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .section-numeral {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--rust);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    /* ── PULL QUOTES ── */
+
+    .pull-quote {
+      margin: 3rem -2rem;
+      padding: 2.5rem 3.5rem;
+      background: var(--warm-white);
+      border-top: 2px solid var(--rust);
+      border-bottom: 1px solid var(--rule-light);
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .pull-quote {
+        margin: 3rem -1rem;
+        padding: 2rem 1.8rem;
+      }
+    }
+
+    .pull-quote p {
+      font-size: 1.45rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--ink);
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .pull-quote-attr {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 1rem;
+    }
+
+    /* ── BLOCK QUOTES (recipe quotes) ── */
+
+    blockquote {
+      margin: 2rem 0;
+      padding: 0 0 0 1.5rem;
+      border-left: 2px solid var(--rust);
+    }
+
+    blockquote p {
+      font-style: italic;
+      color: var(--ink-light);
+      font-size: 1.08rem;
+    }
+
+    /* ── INLINE ACCENTS ── */
+
+    em {
+      font-style: italic;
+    }
+
+    strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .site-name {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    /* ── ORNAMENTAL DIVIDERS ── */
+
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 3.5rem 0;
+    }
+
+    .ornament-divider::before,
+    .ornament-divider::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: var(--rule-light);
+    }
+
+    .ornament-divider span {
+      color: var(--rust);
+      font-size: 0.9rem;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── FOOTER ── */
+
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .coda {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .coda-link {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .coda-link:hover {
+      color: var(--rust-light);
+    }
+
+    .coda-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--rule);
+      margin: 1.5rem auto;
+    }
+
+    .coda-note {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+    }
+
+    /* ── ANIMATIONS ── */
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll-triggered fade for sections */
+    .section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 3rem 1.2rem 2.5rem;
+      }
+      .article-body {
+        padding: 2.5rem 1.2rem 4rem;
+      }
+      .article-footer {
+        padding: 1.5rem 1.2rem 3rem;
+      }
+      .headline {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.05rem;
+      }
+    }
+
+    /* ── SELECTION COLOR ── */
+    ::selection {
+      background: rgba(139, 69, 19, 0.12);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <p class="masthead-label">An Essay</p>
+    <div class="masthead-rule">
+      <span class="masthead-ornament">✦</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="kicker">Food &amp; The Internet</span>
+    <h1 class="headline">The Internet's Most Honest Food Blog Has Been Running for <em>13 Years.</em> You've Never Heard of It.</h1>
+    <p class="dek">On <em>Happiness &amp; Hominy</em>, a WordPress blog with 49 subscribers, an Atlanta home cook named Grace has spent thirteen years building something the food internet mostly lost around 2016: the texture of an actual practice.</p>
+    <div class="byline-block">
+      <div class="byline-text"><strong>Essay</strong></div>
+      <div class="byline-divider"></div>
+      <div class="byline-text">April 2026</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <main class="article-body">
+
+    <p>There is a WordPress blog that has been publishing recipes since October 2012. It has 49 subscribers. No Instagram, no Substack, no affiliate links, no sponsored content, no "jump to recipe" button engineered to get you past a story about a childhood summer in coastal Georgia. It loads fast. It looks exactly like it did a decade ago. It is called <span class="site-name">Happiness &amp; Hominy,</span> and the tagline — <em>Good Food, Good Life</em> — means precisely what it says.</p>
+
+    <p>The woman behind it is an Atlanta home cook named Grace, and she has, with no interest in being discovered, assembled one of the most useful and quietly sophisticated recipe archives on the internet.</p>
+
+    <p>When you arrive at the homepage, there is no introduction. No "about." No onboarding of any kind. You are simply dropped into the cooking. The most recent recipe is at the top. The archive stretches behind it for thirteen years. There is nothing to orient you because orientation isn't the point.</p>
+
+    <p>This is not a blog that resisted the modern internet. It is a blog that never adapted to it — and in that refusal, or that indifference, or whatever it finally is, it has preserved something the rest of the food internet largely surrendered around 2016: the texture of an actual practice.</p>
+
+    <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+    <!-- SECTION I -->
+    <div class="section" id="section-1">
+      <div class="section-header">
+        <span class="section-numeral">I.</span>
+        <span class="section-title">The Early Voice</span>
+      </div>
+
+      <p>To understand <span class="site-name">Happiness &amp; Hominy</span>, go back to January 2014, where a personality first fully arrives on the page.</p>
+
+      <p>The Bean and Ham Soup, posted January 29th, opens in a register that will feel familiar to anyone who has read deep into the archive: <em>"Oh, this one was good!"</em> Grace used exclamation points more freely in 2014 — the underlying warmth never leaves, but the punctuation gradually settles. What distinguishes the post is a passing reference: she mentions having "extolled the virtues of cooking a ham before," linking backward into her own archive the way a person might reference a previous conversation with a friend. The recipe is built around a ham bone she suggests pulling from the freezer if you saved it from the Christmas ham. The assumption — that you are the kind of person who saves ham bones, who roasts a Christmas ham, that this is a thing your household does — is made without explanation or apology. She just makes it, and moves on. The soup simmers for eight to ten hours. She notes she'd use a Crock Pot but doesn't own one big enough. That parenthetical tells you something about the scale of the pots she does own.</p>
+
+      <p>Three months of silence in the archive, recorded without comment. Then the spring 2014 burst: Creamed Spinach, Sausage &amp; Grits Casserole, Southern Skillet Cornbread, Italian Baked Eggs — all within six weeks. This is where the foundation is poured.</p>
+
+      <p>The Creamed Spinach is the simplest recipe in the visible archive: butter, flour, onion, garlic, milk, nutmeg, Parmesan, two bags of baby spinach, no preamble. Its method closes with a single line: <em>"Serve!"</em> That exclamation point is doing a great deal of work. It is the exclamation point of someone who has been stirring this pot and is ready for dinner, and who trusts you to be too.</p>
+
+      <p>The Italian Baked Eggs, posted May 10th, contains the most personal cooking confession in the early archive: <em>"I'm slowly getting used to runny eggs, but this recipe is speeding up the process. I still have a little trouble getting the timing right, but the method below has been working well lately."</em> Grace almost never tells us about her learning curve. The recipe is simplicity: marinara in ramekins, two eggs cracked over each, Parmesan, fifteen minutes at 400 degrees, crusty bread for scooping. She acknowledges still working out the timing. She posts it anyway, because it has been working well lately, and that is sufficient.</p>
+
+      <div class="pull-quote">
+        <p>The fame is already going to my head&nbsp;;)</p>
+        <div class="pull-quote-attr">Grace, in her only comment-section exchange — May 2014</div>
+      </div>
+
+      <p>The post also contains the only comment section in the visible archive worth reading. A reader named Dimple writes that she is making the eggs for breakfast the next morning. Grace: <em>"I hope you like them! Any tips you may have after testing are welcome&nbsp;:)"</em> The smiley face is the only emoji in thirteen years of writing. Three weeks later, Dimple returns to say she has featured the recipe on her own blog. Grace: <em>"So cool! Thanks! The fame is already going to my head&nbsp;;)"</em> This is the entirety of Grace's public comment-section presence across the discoverable archive. After May 2014, the comments go quiet. She keeps cooking. She keeps writing. She doesn't appear to miss the feedback.</p>
+    </div>
+
+    <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+    <!-- SECTION II -->
+    <div class="section" id="section-2">
+      <div class="section-header">
+        <span class="section-numeral">II.</span>
+        <span class="section-title">The Holiday Table, Assembled Over a Decade</span>
+      </div>
+
+      <p>There is particular pleasure in reading the archive as a record of Grace's holiday cooking, because across thirteen years you can watch a complete Thanksgiving and Christmas table assemble itself — recipe by recipe, year by year — until you realize what you're looking at is an entire family's celebratory food culture, documented in real time.</p>
+
+      <p>It begins with the Glorified Brussels Sprouts in October 2014: <em>"This was the main Brussels sprouts recipe I grew up with at holiday dinners."</em> The recipe is a document of mid-century American home cooking — canned mandarin oranges, their reserved syrup thickened with cornstarch into a sauce, poured over Brussels sprouts scored at the base with a shallow X, finished with water chestnuts for crunch. Grace posts it without knowing distance, because it is the Brussels sprouts she grew up with and it is good. The shallow X cut at the base of each sprout — that small, specific, inherited technique for even cooking — is someone's grandmother's knowledge, transmitted here without ceremony.</p>
+
+      <p>One week later: the Sausage, Apple, and Cranberry Stuffing.</p>
+
+      <blockquote>
+        <p>"A few years ago, my mom went on a kick where she was determined to find our family's new 'classic' stuffing/dressing recipe. This recipe, my friends, was by far our favorite."</p>
+      </blockquote>
+
+      <p>This is the only time Grace mentions her mother. The word "friends" is the only time she addresses us directly as an audience. The recipe is built on her own Skillet Cornbread, linked to the post from six months earlier — crumbled and combined with pork sausage, sweet onion, celery, sage, rosemary, thyme, Granny Smith apple, dried cranberries, parsley, butter, stock. What Grace is recording is the outcome of a family search: multiple Thanksgivings, multiple contenders, a decision made. The word "our" does the emotional work of the whole post. Six years later, she posts the simpler sage-only Cornbread Dressing and notes in the variations that her preferred additions are sausage, apple, and dried cranberries. What her mother helped her find has become so fully hers that she now recommends it as a variation of her own recipe. The circle closes without announcement.</p>
+    </div>
+
+    <!-- SECTION III -->
+    <div class="section" id="section-3">
+      <div class="section-header">
+        <span class="section-numeral">III.</span>
+        <span class="section-title">The Grammar of Generosity</span>
+      </div>
+
+      <p>One of the most consistent features of the archive is Grace's relationship to sources. She credits without hesitation and links without possessiveness. The Pretzel-Crusted Pork Schnitzel is "Adapted from this recipe" — Bon Appétit. The Slow-Roasted Salmon: same. The Korean Pot Roast, the Pressed Antipasto Picnic Sandwiches, the Sheet Pan Greek Gnocchi — all attributed, all linked. In thirteen years, Grace has never posted a recipe adapted from someone else's work without saying so.</p>
+
+      <p>The food internet runs, in significant part, on laundered recipes — ideas lifted from professional sources, minimally altered, posted without attribution, optimized for search. Grace operates entirely outside this economy, and the effect is something the economy cannot buy: trust. There is an irony here that any branding strategist would find instructive. The blogs that most aggressively claim ownership of their recipes are the ones you approach with the most skepticism. Grace claims nothing, credits everything, and for this reason you believe her completely.</p>
+
+      <div class="pull-quote">
+        <p>The attribution is not modesty. It is precision.</p>
+      </div>
+
+      <p>She is telling you exactly where she started and exactly what she changed, and that specificity makes everything she tells you credible. When the Sourdough Bread post opens with <em>"You should definitely read her instructions before attempting my bare-bones version"</em> and links to another woman's kitchen, it is performing the same function: defining the limits of her authority so clearly that everything within those limits can be fully trusted. The recipe she posts is not the comprehensive one. It is the one she actually uses. Those are different claims, and Grace understands the difference.</p>
+    </div>
+
+    <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+    <!-- SECTION IV -->
+    <div class="section" id="section-4">
+      <div class="section-header">
+        <span class="section-numeral">IV.</span>
+        <span class="section-title">The Pandemic Kitchen and the Closed System</span>
+      </div>
+
+      <p>The fall and winter of 2020 are where the archive becomes, in retrospect, most charged. Grace never mentions the pandemic. Not once, in any post from that year. No "this has been a hard year." No "I've been finding comfort in my kitchen." No quarantine cooking. The world outside does not appear in the writing, not even as a shadow.</p>
+
+      <p>This is not an omission. It is a worldview.</p>
+
+      <p>Between September and December 2020, she published the Slow-Roasted Salmon with Fennel, Citrus, and Chiles; the Twice Baked Potato Casserole; the Cornbread Dressing; the Pretzel-Crusted Pork Schnitzel; the German Red Cabbage; the Chicken Piccata. The posting frequency increased. The ambition of the recipes intensified. The silence around it all deepened.</p>
+
+      <p>Consider what the German menu represents. The Pretzel-Crusted Pork Schnitzel requires a six-hour apple cider brine, pretzel crumbs pulsed in a food processor, a three-bowl dredging station, oil maintained at precise temperature and tested with a pinch of flour before each batch. The German Red Cabbage requires thirty minutes of sustained attention — wilted, sugared, braised in balsamic, uncovered and reduced until the sugars caramelize. These are not pantry-clearing recipes. They are a closed system: a complete menu, deliberately assembled, demanding concentration, producing specific and knowable results. The schnitzel will come out golden. The cabbage will come out sweet and deep and faintly sharp. In December of 2020, in a world producing very few specific and knowable results, that mattered.</p>
+
+      <p>The Slow-Roasted Salmon is where Grace's restraint, just once, tips briefly into declaration.</p>
+
+      <blockquote>
+        <p>"Slow-roasting the salmon is a game changer. It's the only way I cook salmon now and it's perfect every time."</p>
+      </blockquote>
+
+      <p>For a writer who almost never makes categorical claims, this is as close as the archive gets to a full-throated endorsement. A two-pound skinless fillet on sliced citrus and chile and fennel fronds, submerged in three-quarters of a cup of olive oil, thirty to forty minutes at 275 degrees. She knows it is perfect every time the way she knows the oil is ready when a pinch of flour bubbles immediately on contact — not from the recipe, but from repetition.</p>
+
+      <div class="pull-quote">
+        <p>What the pandemic posts reveal, read together, is not a woman finding comfort in cooking. It is a woman who already cooked this seriously and continuously — and who simply kept going, without adjustment, without framing, without narrating why.</p>
+        <div class="pull-quote-attr">The work was the expression. The life around it didn't need to be explained.</div>
+      </div>
+    </div>
+
+    <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+    <!-- SECTION V -->
+    <div class="section" id="section-5">
+      <div class="section-header">
+        <span class="section-numeral">V.</span>
+        <span class="section-title">Slight Imperfections, Faithfully Recorded</span>
+      </div>
+
+      <p>Grace is not a technically flawless cook, and the archive doesn't pretend otherwise. She was still getting used to runny eggs in 2014. The Bean and Ham Soup note about the Crock Pot she doesn't own large enough suggests a kitchen that is well-used but not perfectly equipped. The Sourdough recipe begins with an explicit deferral to a better source for beginners. These are not the admissions of an amateur — they are the honesty of someone who knows precisely what she has mastered and what she is still working on.</p>
+
+      <p>Her ingredient lists almost always carry a substitution: buttermilk swapped for milk with a splash of vinegar, ham hocks for smoked sausage, chicken stock adjusted by feel. These are not SEO hedges. They are the notes of someone who shops at an ordinary grocery store and is not assuming you source blood oranges from a specialty market. The recommendation to substitute steelhead trout for salmon — <em>"delicious and more sustainable"</em> — is not virtue-signaling. It is a cook who has made both and is telling you what she thinks.</p>
+    </div>
+
+    <!-- SECTION VI -->
+    <div class="section" id="section-6">
+      <div class="section-header">
+        <span class="section-numeral">VI.</span>
+        <span class="section-title">What the Archive Is</span>
+      </div>
+
+      <p>There is a structural difference between an archive and a feed. A feed is designed to be consumed forward, in the present tense of its production. An archive is designed to be navigated — backward, laterally, by season, by ingredient. The food internet converted almost entirely to feeds around 2014, the same year Grace was posting her Italian Baked Eggs and working out the timing on runny yolks. She never made the conversion. <span class="site-name">Happiness &amp; Hominy</span> is and has always been an archive, and visiting it now feels like something genuinely rare: encountering someone's full practice rather than their curated output.</p>
+
+      <p>The blog has 49 subscribers. The comments are essentially silent. There are no ads, no popups. The URL is the original one.</p>
+
+      <p>The details accumulate into something like a portrait. The Sausage &amp; Grits Casserole note that the dish can be refrigerated overnight — the planning instinct of a host. The Glorified Brussels Sprouts' shallow X cut at the base of each sprout — the inherited precision of a cook who learned from someone who learned from someone else. The Korean Pot Roast served <em>"family-style, with rice, cilantro, and kimchi alongside"</em> — the word "family-style" signaling a particular kind of table. The Strawberry Pretzel Salad's gelatin timing cue — <em>"when mixture is about the consistency of egg whites, pour and spread over cream cheese layer"</em> — which exists because someone once poured it too early and watched the whole thing dissolve. The Bean and Ham Soup's parenthetical: <em>"this recipe would work well in a crock pot, I just don't have one big enough."</em></p>
+
+      <p>These are the details of someone who actually cooks — not as content, not as performance, but as the primary language through which she takes care of people and documents what she has learned.</p>
+    </div>
+
+    <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+    <!-- SECTION VII -->
+    <div class="section" id="section-7">
+      <div class="section-header">
+        <span class="section-numeral">VII.</span>
+        <span class="section-title">The Cornbread, Still</span>
+      </div>
+
+      <p>The Southern Skillet Cornbread was posted on May 8, 2014. It was quietly revised in July 2022 — the date updated, the recipe unchanged. It has been online, at the same URL, for nearly twelve years.</p>
+
+      <p>The recipe requires a cast iron skillet, described as "a good, heavy, well-seasoned" one — required, not suggested, because the cast iron is what makes the edges crisp and the crispy edges are the whole point. Shortening heated over medium-high heat on the stovetop until the batter sizzles on contact. One minute on the flame, then twenty-five minutes in a 450-degree oven. The edges go crispy. Grace has made this often enough to state that as a fact rather than a hope.</p>
+
+      <p>In October 2014, the cornbread became the foundation for the Sausage, Apple, and Cranberry Stuffing — the family's new classic. In November 2020, it became the foundation for the simpler Cornbread Dressing, which links back to the 2014 post. In December 2025, the New Year's Black-Eyed Pea Soup links to it again, because the soup has always required it — the black-eyed peas for prosperity, the greens for paper money, the cornbread for gold.</p>
+
+      <p>What does it mean that a recipe has been online for twelve years, revised once without changing, and served as the foundation for at least three other recipes posted across a decade? It means the work is done on it. The variations explored, the adjustments made, and what remains is the thing itself.</p>
+
+      <div class="pull-quote">
+        <p>To have eaten this cornbread, made in the same cast iron skillet, at different tables, across different years of a life shared with the person who wrote it down — you understand something about the archive that an outside reader can only approximate.</p>
+        <div class="pull-quote-attr">The recipe is not a document of what Grace cooks. It is a document of who she is.</div>
+      </div>
+
+      <p><span class="site-name">Happiness &amp; Hominy</span> produces something the food internet mostly doesn't: a record of what has been found worth making, again and again, over the course of an actual life.</p>
+
+      <p>The cornbread is still the gold.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <div class="coda">
+      <a href="https://happinessandhominy.wordpress.com" class="coda-link">happinessandhominy.wordpress.com</a>
+      <div class="coda-rule"></div>
+      <p class="coda-note">49 subscribers &nbsp;·&nbsp; October 2012 – present &nbsp;·&nbsp; Good Food, Good Life</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered section reveals
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
